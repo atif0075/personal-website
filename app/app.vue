@@ -7,7 +7,7 @@ const routes = [
 </script>
 <template>
   <div
-    class="font-gilda bg-gradient-to-b from-gray-900 to-black min-h-screen w-full"
+    class="font-gilda bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black min-h-screen w-full"
   >
     <NuxtPage />
     <nav

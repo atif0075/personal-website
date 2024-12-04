@@ -32,8 +32,6 @@ onMounted(() => {
     socialsVisible.value = true;
   }, nameAnimationDuration + 600);
 });
-
-const openLink = (url) => window.open(url, "_blank");
 </script>
 
 <template>
