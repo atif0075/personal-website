@@ -37,9 +37,7 @@ const openLink = (url) => window.open(url, "_blank");
 </script>
 
 <template>
-  <div
-    class="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-black"
-  >
+  <div class="w-full min-h-screen flex flex-col items-center justify-center">
     <div>
       <div
         v-for="isFirst in [true, false]"
