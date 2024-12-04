@@ -4,11 +4,22 @@ const routes = [
   { name: "projects", path: "/projects" },
   { name: "uses", path: "/uses" },
 ];
+const colorMode = useColorMode();
+const toggleColorMode = () => {
+  colorMode.preference = colorMode.preference === "light" ? "dark" : "light";
+};
 </script>
 <template>
   <div
     class="font-gilda bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black min-h-screen w-full"
   >
+    <button
+      @click="toggleColorMode"
+      class="absolute top-5 right-5 dark:text-white"
+    >
+      /{{ colorMode.preference }}
+    </button>
+
     <NuxtPage />
     <nav
       class="fixed bottom-[5%] left-1/2 transform -translate-x-1/2 flex gap-x-16 dark:text-white"
