@@ -38,7 +38,7 @@ const openLink = (url) => window.open(url, "_blank");
 
 <template>
   <div class="w-full min-h-screen flex flex-col items-center justify-center">
-    <div>
+    <div class="mx-auto max-w-80 md:max-w-96">
       <div
         v-for="isFirst in [true, false]"
         :key="isFirst"
@@ -49,7 +49,7 @@ const openLink = (url) => window.open(url, "_blank");
             (l) => l.isFirst === isFirst
           )"
           :key="index"
-          class="text-8xl font-light transition-all duration-500 transform dark:text-white"
+          class="text-7xl sm:text-8xl font-light transition-all duration-500 transform dark:text-white"
           :class="{
             'opacity-0 translate-y-2 rotate-2': !letter.visible,
             'opacity-100 translate-y-0 rotate-0': letter.visible,
@@ -58,7 +58,7 @@ const openLink = (url) => window.open(url, "_blank");
           {{ letter.char }}
         </span>
       </div>
-      <div class="space-y-1 mt-5">
+      <div class="space-y-1 mt-5 max-w-80 md:max-w-96">
         <p
           class="text-base font-light dark:text-white block transition-all duration-500 transform"
           :class="{
@@ -66,7 +66,7 @@ const openLink = (url) => window.open(url, "_blank");
             'opacity-100 translate-y-0': bioVisible,
           }"
         >
-          <span class="bio-span">
+          <span class="bio-span relative">
             frontend developer, sometimes full-stack(Firebase)
           </span>
         </p>
@@ -81,7 +81,7 @@ const openLink = (url) => window.open(url, "_blank");
           <span class="bio-span"> loves Nuxt, Open Source, and Cricket. </span>
         </p>
         <p
-          class="text-base font-light dark:text-white block transition-all duration-500 transform"
+          class="text-sm sm:text-base font-light dark:text-white block transition-all duration-500 transform"
           :class="{
             'opacity-0 translate-y-2': !bioVisible,
             'opacity-100 translate-y-0': bioVisible,
@@ -119,6 +119,6 @@ const openLink = (url) => window.open(url, "_blank");
 </template>
 <style scoped>
 .bio-span {
-  @apply block leading-5 truncate hover:max-w-[400px] max-w-[208px] transition-all duration-300;
+  @apply block text-sm sm:text-base max-w-[400px] leading-5 md:truncate md:hover:max-w-[400px] md:max-w-[208px] transition-all duration-300;
 }
 </style>
