@@ -15,7 +15,7 @@ const toggleColorMode = () => {
   >
     <button
       @click="toggleColorMode"
-      class="absolute top-5 right-5 dark:text-white"
+      class="absolute top-5 right-5 dark:text-white z-10"
     >
       /{{ colorMode.preference }}
     </button>
@@ -37,3 +37,9 @@ const toggleColorMode = () => {
     </nav>
   </div>
 </template>
+<style>
+*::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+</style>

@@ -1,15 +1,21 @@
-<script setup>
-import { ref, onMounted } from "vue";
+<script setup lang="ts">
+import type { Letter } from "~/types";
 
 const firstName = "atif";
 const lastName = "mehmöd";
-const letters = ref([]);
-const bioVisible = ref(false);
-const socialsVisible = ref(false);
+const letters = ref<Letter[]>([]);
+const bioVisible = ref<boolean>(false);
+const socialsVisible = ref<boolean>(false);
 
 onMounted(() => {
-  const createLetters = (name, isFirst) =>
-    [...name].map((char) => ({ char, visible: false, isFirst }));
+  const createLetters = (name: string, isFirst: boolean): Letter[] =>
+    [...name].map(
+      (char): Letter => ({
+        char,
+        visible: false,
+        isFirst,
+      })
+    );
 
   letters.value = [
     ...createLetters(firstName, true),
@@ -17,20 +23,80 @@ onMounted(() => {
   ];
 
   // Animate letters
-  letters.value.forEach((_, index) =>
-    setTimeout(() => (letters.value[index].visible = true), index * 100 + 400)
-  );
+  letters.value.forEach((_, index: number): void => {
+    setTimeout((): void => {
+      if (letters.value[index]) {
+        letters.value[index].visible = true;
+      }
+    }, index * 100 + 400);
+  });
 
-  // Animate bio section after name animation
-  const nameAnimationDuration = letters.value.length * 100 + 400;
-  setTimeout(() => {
+  const nameAnimationDuration: number = letters.value.length * 100 + 400;
+
+  setTimeout((): void => {
     bioVisible.value = true;
   }, nameAnimationDuration + 200);
 
-  // Animate socials after bio
-  setTimeout(() => {
+  setTimeout((): void => {
     socialsVisible.value = true;
   }, nameAnimationDuration + 600);
+});
+
+useHead({
+  title: "Atif Mehmood - Frontend Developer Portfolio",
+  htmlAttrs: {
+    lang: "en",
+  },
+  meta: [
+    {
+      name: "description",
+      content:
+        "Frontend developer specializing in Vue.js, Nuxt, and Firebase. Based in Faisalabad, Pakistan. View my projects and get in touch.",
+    },
+    {
+      name: "keywords",
+      content:
+        "frontend developer, full-stack developer, Vue.js, Nuxt, Firebase, Pakistan, Faisalabad",
+    },
+    {
+      property: "og:title",
+      content: "Atif Mehmood - Frontend Developer Portfolio",
+    },
+    {
+      property: "og:description",
+      content:
+        "Frontend developer specializing in Vue.js, Nuxt, and Firebase. Based in Faisalabad, Pakistan.",
+    },
+    { property: "og:type", content: "website" },
+    { property: "og:locale", content: "en_US" },
+    // Added og:url
+    {
+      property: "og:url",
+      content: "https://hiatif.vercel.app",
+    },
+    // Added og:image
+    {
+      property: "og:image",
+      content: "/og/og-image.png",
+    },
+    { name: "twitter:card", content: "summary_large_image" },
+    {
+      name: "twitter:title",
+      content: "Atif Mehmood - Frontend Developer Portfolio",
+    },
+    {
+      name: "twitter:description",
+      content: "Frontend developer specializing in Vue.js, Nuxt, and Firebase.",
+    },
+    {
+      name: "twitter:image",
+      content: "/og/og-image.png",
+    },
+  ],
+  link: [
+    { rel: "canonical", href: "https://hiatif.vercel.app" },
+    { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+  ],
 });
 </script>
 
@@ -38,8 +104,8 @@ onMounted(() => {
   <div class="w-full min-h-screen flex flex-col items-center justify-center">
     <div class="mx-auto max-w-80 md:max-w-96">
       <div
-        v-for="isFirst in [true, false]"
-        :key="isFirst"
+        v-for="(isFirst, index) in [true, false]"
+        :key="index"
         class="flex justify-start"
       >
         <span
@@ -58,7 +124,7 @@ onMounted(() => {
       </div>
       <div class="space-y-1 mt-5 max-w-80 md:max-w-96">
         <p
-          class="text-base font-light dark:text-white block transition-all duration-500 transform"
+          class="text-base font-light dark:text-white block transition-[opacity,transform] duration-500 transform"
           :class="{
             'opacity-0 translate-y-2': !bioVisible,
             'opacity-100 translate-y-0': bioVisible,
@@ -69,7 +135,7 @@ onMounted(() => {
           </span>
         </p>
         <p
-          class="text-base font-light dark:text-white block transition-all duration-500 transform"
+          class="text-base font-light dark:text-white block transition-[opacity,transform] duration-500 transform"
           :class="{
             'opacity-0 translate-y-2': !bioVisible,
             'opacity-100 translate-y-0': bioVisible,
@@ -79,7 +145,7 @@ onMounted(() => {
           <span class="bio-span"> loves Nuxt, Open Source, and Cricket. </span>
         </p>
         <p
-          class="text-sm sm:text-base font-light dark:text-white block transition-all duration-500 transform"
+          class="text-sm sm:text-base font-light dark:text-white block transition-[opacity,transform] duration-500 transform"
           :class="{
             'opacity-0 translate-y-2': !bioVisible,
             'opacity-100 translate-y-0': bioVisible,
@@ -90,27 +156,19 @@ onMounted(() => {
         </p>
       </div>
       <div
-        class="mt-5 flex items-center gap-x-2 transition-all duration-500 transform"
+        class="mt-5 flex gap-x-2 text-xs"
         :class="{
           'opacity-0 translate-y-2': !socialsVisible,
-          'opacity-100 translate-y-0': socialsVisible,
+          'opacity-100': socialsVisible,
         }"
       >
-        <Icon
-          @click="openLink('https://github.com/atif0075')"
-          name="ion:logo-github"
-          class="text-black dark:text-white cursor-alias"
-        />
-        <Icon
-          @click="openLink('https://linkedin.com/in/atif0075')"
-          name="ion:logo-linkedin"
-          class="text-black dark:text-white cursor-alias"
-        />
-        <Icon
-          @click="openLink('https://facebook.com/atif0075')"
-          name="ion:logo-facebook"
-          class="text-black dark:text-white cursor-alias"
-        />
+        <LinkPreview url="https://github.com/atif0075"> github </LinkPreview>
+        <LinkPreview url="https://linkedin.com/in/atif0075">
+          linkedin
+        </LinkPreview>
+        <LinkPreview url="https://facebook.com/atif0075">
+          facebook
+        </LinkPreview>
       </div>
     </div>
   </div>

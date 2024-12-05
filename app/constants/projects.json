@@ -3,14 +3,15 @@
     {
       "name": "Kondeki",
       "description": "A webapp designed to help parents monitor their children's online activities.",
-      "url": "https://example.com",
+      "url": "https://webappusw1.kondeki.com/",
+      "tag": "FrontEnd",
       "image": "https://example.com/image.png",
       "order": 0
     },
     {
       "name": "Book Man & Van",
       "description": "Expert man and van services for stress-free relocations.",
-      "url": "https://bookmanandvan.com",
+      "url": "https://book-man-and-van.vercel.app/our-services",
       "image": "https://example.com/image.png",
       "order": 1
     },
@@ -32,13 +33,15 @@
       "name": "eTechEng Hiring",
       "description": "A freelance platform for everyone, like fiverr, upwork.",
       "url": "https://e-tech-hiring.vercel.app/",
+      "tag": "FrontEnd",
       "image": "https://example.com/image.png",
       "order": 4
     },
     {
       "name": "eTechEng",
       "description": "A portal system for Engineering Professionals, Recruiters, and Students.",
-      "url": "https://e-tech-eng.vercel.app/",
+      "url": "https://e-tech-eng.vercel.app/sign-up-as",
+      "tag": "FrontEnd",
       "image": "https://example.com/image.png",
       "order": 5
     },
@@ -46,13 +49,14 @@
       "name": "Endure Coaching",
       "description": "A landing page for a fitness and nutrition coach.",
       "url": "https://endure-coaching.vercel.app/",
+      "tag": "Landing Page",
       "image": "https://example.com/image.png",
       "order": 6
     },
     {
       "name": "WellCare",
       "description": "Little website for a weight loss guide.",
-      "url": "https://klomi.vercel.app/",
+      "url": "https://weight-lose.vercel.app/",
       "image": "https://example.com/image.png",
       "order": 7
     },
