@@ -1,5 +1,12 @@
-
 User-agent: *
 Allow: /
 
+# Prevent crawling
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /404
+Disallow: /500
+Disallow: /*.json$
+
+Crawl-delay: 10
 Sitemap: https://hiatif.vercel.app/sitemap.xml

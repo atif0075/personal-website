@@ -4,14 +4,12 @@
       "name": "Kondeki",
       "description": "A webapp designed to help parents monitor their children's online activities.",
       "url": "https://webappusw1.kondeki.com/",
-      "image": "https://example.com/image.png",
       "order": 0
     },
     {
       "name": "Book Man & Van",
       "description": "Expert man and van services for stress-free relocations.",
       "url": "https://book-man-and-van.vercel.app/our-services",
-      "image": "https://example.com/image.png",
       "order": 1
     },
     {
@@ -25,56 +23,48 @@
       "name": "Viewpointnexus",
       "description": "Reviews for all your favorite movies, tv shows, and more",
       "url": "https://viewpointnexus.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 3
     },
     {
       "name": "eTechEng Hiring",
       "description": "A freelance platform for everyone, like fiverr, upwork.",
       "url": "https://e-tech-hiring.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 4
     },
     {
       "name": "eTechEng",
       "description": "A portal system for Engineering Professionals, Recruiters, and Students.",
       "url": "https://e-tech-eng.vercel.app/sign-up-as",
-      "image": "https://example.com/image.png",
       "order": 5
     },
     {
       "name": "Endure Coaching",
       "description": "A landing page for a fitness and nutrition coach.",
       "url": "https://endure-coaching.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 6
     },
     {
       "name": "WellCare",
       "description": "Little website for a weight loss guide.",
       "url": "https://weight-lose.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 7
     },
     {
       "name": "Prestiio",
       "description": "An app that aims to celebrate, uplift and educate women.",
       "url": "https://prestiio.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 8
     },
     {
       "name": "LiveLoop NFT",
       "description": "Create an NFT with your best Loop. Get royalties forever.",
       "url": "https://liveloop-nft.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 9
     },
     {
       "name": "Libertas",
       "description": "The app is used by a large financial institution to manage its clients and investments.",
       "url": "https://libertas-web.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 10
     },
     {
@@ -88,42 +78,36 @@
       "name": "DireVue",
       "description": "A comprehensive collection of Vue directives",
       "url": "https://direvue.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 12
     },
     {
       "name": "CDN Hive",
       "description": "A project to generate free CDN links for your CSS and JS files",
       "url": "https://cdn-hive.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 13
     },
     {
       "name": "VueFire Notes",
       "description": "A simple note-taking app like joplin built with Vue and Firebase",
       "url": "https://vuefire-joplin.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 14
     },
     {
       "name": "Klomi",
       "description": "Change the way you rent your home",
       "url": "https://klomi.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 15
     },
     {
       "name": "WYSIWYG",
       "description": "An open-source WYSIWYG editor built with headless TipTap editor, Tailwindcss",
-      "url": "https://klomi.vercel.app/",
-      "image": "https://example.com/image.png",
+      "url": "https://tiptap-vue-tailwindcss-wysiwyg.vercel.app/",
       "order": 16
     },
     {
       "name": "IMF Tools",
       "description": "Built partial front-end of the IMF tools for scraping and analyzing data.",
       "url": "https://imftools.vercel.app/",
-      "image": "https://example.com/image.png",
       "order": 17
     }
   ]

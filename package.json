@@ -10,9 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/sitemap": "7.0.0",
     "clsx": "^2.1.1",
     "nuxt": "^3.14.1592",
-    "qss": "^3.0.0",
     "tailwind-merge": "^2.5.5",
     "vue": "latest",
     "vue-router": "latest"

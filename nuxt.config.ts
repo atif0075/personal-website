@@ -81,8 +81,45 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxt/icon",
     "@nuxtjs/color-mode",
+    "@nuxtjs/sitemap",
   ],
-
+  site: {
+    name: "Atif Mehmood - Frontend Developer Portfolio",
+    url: "https://hiatif.vercel.app",
+    indexable: true,
+  },
+  sitemap: {
+    exclude: ["/404", "/500", "/api/**"],
+    defaults: {
+      changefreq: "daily",
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    },
+    sitemaps: {
+      main: {
+        urls: [
+          {
+            loc: "/",
+            changefreq: "weekly",
+            priority: 1,
+            lastmod: new Date().toISOString(),
+          },
+          {
+            loc: "/projects",
+            changefreq: "weekly",
+            priority: 0.8,
+            lastmod: new Date().toISOString(),
+          },
+          {
+            loc: "/uses",
+            changefreq: "monthly",
+            priority: 0.6,
+            lastmod: new Date().toISOString(),
+          },
+        ],
+      },
+    },
+  },
   googleFonts: {
     families: {
       "Gilda Display": true,

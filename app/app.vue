@@ -5,9 +5,27 @@ const routes = [
   { name: "uses", path: "/uses" },
 ];
 const colorMode = useColorMode();
+const route = useRoute();
 const toggleColorMode = () => {
   colorMode.preference = colorMode.preference === "light" ? "dark" : "light";
 };
+
+useHead(() => ({
+  htmlAttrs: {
+    lang: "en",
+  },
+  link: [
+    {
+      rel: "icon",
+      type: "image/png",
+      href: "/favicon/favicon-32x32.png",
+    },
+    {
+      rel: "canonical",
+      href: "https://hiatif.vercel.app" + route.path,
+    },
+  ],
+}));
 </script>
 <template>
   <div

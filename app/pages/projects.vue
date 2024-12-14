@@ -14,74 +14,44 @@ interface ProjectsResponse {
 
 const { data: projectData } = await useFetch<ProjectsResponse>("/api/projects");
 
-useHead({
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: projectData.value?.projects.map((project, index) => ({
+    "@type": "SoftwareApplication",
+    position: index + 1,
+    name: project.name,
+    description: project.description,
+    url: project.url,
+  })),
+};
+
+useSeoMeta({
   title: "Projects | Atif Mehmood",
-  htmlAttrs: {
-    lang: "en",
-  },
-  meta: [
+  ogTitle: "Projects | Atif Mehmood",
+  description:
+    "Explore my portfolio of frontend development projects built with Vue.js, Nuxt, and Firebase. Each project showcases different aspects of modern web development.",
+  ogDescription:
+    "Explore my portfolio of frontend development projects built with Vue.js, Nuxt, and Firebase.",
+  keywords:
+    "portfolio projects, web development, Vue.js projects, Nuxt applications, frontend development, Firebase projects, Atif Mehmood work",
+  ogType: "website",
+  ogUrl: "https://hiatif.vercel.app/projects",
+  ogImage: "/og/og-projects.png",
+  ogLocale: "en_US",
+  twitterCard: "summary_large_image",
+  twitterTitle: "Projects | Atif Mehmood",
+  twitterDescription:
+    "Explore my portfolio of frontend development projects built with Vue.js, Nuxt, and Firebase.",
+  twitterImage: "/og/og-projects.png",
+  robots: "index, follow",
+});
+
+useHead({
+  script: [
     {
-      name: "description",
-      content:
-        "Explore my portfolio of frontend development projects built with Vue.js, Nuxt, and Firebase. Each project showcases different aspects of modern web development.",
-    },
-    {
-      name: "keywords",
-      content:
-        "portfolio projects, web development, Vue.js projects, Nuxt applications, frontend development, Firebase projects, Atif Mehmood work",
-    },
-    {
-      property: "og:title",
-      content: "Projects | Atif Mehmood",
-    },
-    {
-      property: "og:description",
-      content:
-        "Explore my portfolio of frontend development projects built with Vue.js, Nuxt, and Firebase.",
-    },
-    {
-      property: "og:type",
-      content: "website",
-    },
-    {
-      property: "og:url",
-      content: "https://hiatif.vercel.app/projects",
-    },
-    {
-      property: "og:image",
-      content: "/og/og-projects.png",
-    },
-    {
-      property: "og:locale",
-      content: "en_US",
-    },
-    {
-      name: "twitter:card",
-      content: "summary_large_image",
-    },
-    {
-      name: "twitter:title",
-      content: "Projects | Atif Mehmood",
-    },
-    {
-      name: "twitter:description",
-      content:
-        "Explore my portfolio of frontend development projects built with Vue.js, Nuxt, and Firebase.",
-    },
-    {
-      name: "twitter:image",
-      content: "/og/og-projects.png",
-    },
-  ],
-  link: [
-    {
-      rel: "canonical",
-      href: "https://hiatif.vercel.app/projects",
-    },
-    {
-      rel: "icon",
-      type: "image/x-icon",
-      href: "/favicon.ico",
+      type: "application/ld+json",
+      children: JSON.stringify(structuredData),
     },
   ],
 });

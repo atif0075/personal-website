@@ -37,7 +37,8 @@
           </div>
 
           <img
-            :src="previewSrc"
+            v-if="cachedImage || previewSrc"
+            :src="cachedImage || previewSrc"
             :width="width"
             :height="height"
             class="size-full rounded-lg object-cover"
@@ -89,6 +90,9 @@ const isLoading = ref(true);
 const preview = ref<HTMLElement | null>(null);
 const hasPopped = ref(false);
 const colorMode = useColorMode();
+const cachedImage = ref<string | null>(null);
+const imageCache = new Map<string, string>();
+const preloadTimeout = ref<NodeJS.Timeout | null>(null);
 
 const previewSrc = computed(() => {
   if (props.isStatic) return props.imageSrc;
@@ -107,6 +111,33 @@ const previewSrc = computed(() => {
 
   return `https://api.microlink.io/?${params.toString()}`;
 });
+
+async function preloadImage(url: string): Promise<void> {
+  if (imageCache.has(url)) {
+    cachedImage.value = imageCache.get(url)!;
+    return;
+  }
+
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    imageCache.set(url, objectUrl);
+    cachedImage.value = objectUrl;
+  } catch (error) {
+    console.error('Failed to preload image:', error);
+  }
+}
+
+function debouncedPreload(url: string) {
+  if (preloadTimeout.value) {
+    clearTimeout(preloadTimeout.value);
+  }
+  
+  preloadTimeout.value = setTimeout(() => {
+    preloadImage(url);
+  }, 100);
+}
 
 const mousePosition = reactive({
   x: 0,
@@ -149,11 +180,15 @@ const popClass = computed(() => {
 function handleMouseMove(event: MouseEvent) {
   mousePosition.x = event.clientX;
   mousePosition.y = event.clientY;
+  
+  if (!props.isStatic && previewSrc.value) {
+    debouncedPreload(previewSrc.value);
+  }
 }
 
 function showPreview() {
   isVisible.value = true;
-  isLoading.value = true;
+  isLoading.value = !cachedImage.value;
   setTimeout(() => {
     hasPopped.value = true;
   }, 50);
@@ -167,6 +202,16 @@ function hidePreview() {
 function handleImageLoad() {
   isLoading.value = false;
 }
+
+onBeforeUnmount(() => {
+  if (preloadTimeout.value) {
+    clearTimeout(preloadTimeout.value);
+  }
+  imageCache.forEach((objectUrl) => {
+    URL.revokeObjectURL(objectUrl);
+  });
+  imageCache.clear();
+});
 </script>
 
 <style scoped>

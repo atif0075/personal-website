@@ -42,60 +42,49 @@ onMounted(() => {
   }, nameAnimationDuration + 600);
 });
 
-useHead({
+useSeoMeta({
   title: "Atif Mehmood - Frontend Developer Portfolio",
-  htmlAttrs: {
-    lang: "en",
-  },
-  meta: [
+  ogTitle: "Atif Mehmood - Frontend Developer Portfolio",
+  description:
+    "Frontend developer specializing in Vue.js, Nuxt, and Firebase. Based in Faisalabad, Pakistan. View my projects and get in touch.",
+  ogDescription:
+    "Frontend developer specializing in Vue.js, Nuxt, and Firebase. Based in Faisalabad, Pakistan.",
+  keywords:
+    "frontend developer, full-stack developer, Vue.js, Nuxt, Firebase, Pakistan, Faisalabad",
+  ogType: "website",
+  ogLocale: "en_US",
+  ogUrl: "https://hiatif.vercel.app",
+  ogImage: "/og/og-image.png",
+  twitterCard: "summary_large_image",
+  twitterTitle: "Atif Mehmood - Frontend Developer Portfolio",
+  twitterDescription:
+    "Frontend developer specializing in Vue.js, Nuxt, and Firebase.",
+  twitterImage: "/og/og-image.png",
+  robots: "index, follow",
+});
+
+useHead({
+  script: [
     {
-      name: "description",
-      content:
-        "Frontend developer specializing in Vue.js, Nuxt, and Firebase. Based in Faisalabad, Pakistan. View my projects and get in touch.",
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Atif Mehmood",
+        jobTitle: "Frontend Developer",
+        url: "https://hiatif.vercel.app",
+        sameAs: [
+          "https://github.com/atif0075",
+          "https://linkedin.com/in/atif0075",
+          "https://facebook.com/atif0075",
+        ],
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Faisalabad",
+          addressCountry: "Pakistan",
+        },
+      }),
     },
-    {
-      name: "keywords",
-      content:
-        "frontend developer, full-stack developer, Vue.js, Nuxt, Firebase, Pakistan, Faisalabad",
-    },
-    {
-      property: "og:title",
-      content: "Atif Mehmood - Frontend Developer Portfolio",
-    },
-    {
-      property: "og:description",
-      content:
-        "Frontend developer specializing in Vue.js, Nuxt, and Firebase. Based in Faisalabad, Pakistan.",
-    },
-    { property: "og:type", content: "website" },
-    { property: "og:locale", content: "en_US" },
-    // Added og:url
-    {
-      property: "og:url",
-      content: "https://hiatif.vercel.app",
-    },
-    // Added og:image
-    {
-      property: "og:image",
-      content: "/og/og-image.png",
-    },
-    { name: "twitter:card", content: "summary_large_image" },
-    {
-      name: "twitter:title",
-      content: "Atif Mehmood - Frontend Developer Portfolio",
-    },
-    {
-      name: "twitter:description",
-      content: "Frontend developer specializing in Vue.js, Nuxt, and Firebase.",
-    },
-    {
-      name: "twitter:image",
-      content: "/og/og-image.png",
-    },
-  ],
-  link: [
-    { rel: "canonical", href: "https://hiatif.vercel.app" },
-    { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   ],
 });
 </script>
@@ -163,10 +152,16 @@ useHead({
         }"
       >
         <LinkPreview url="https://github.com/atif0075"> github </LinkPreview>
-        <LinkPreview url="https://linkedin.com/in/atif0075">
+        <LinkPreview
+          isStatic
+          imageSrc="https://awesomescreenshot.s3.amazonaws.com/image/2101513/52052145-daf7c2e3f7afa8e387cea7ce91abdcfb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20241214%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241214T134501Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=6edb4b9fb28004e4925951aba9590946a2fd3db7219f5676a005aa0af829dcca"
+        >
           linkedin
         </LinkPreview>
-        <LinkPreview url="https://facebook.com/atif0075">
+        <LinkPreview
+          isStatic
+          imageSrc="https://awesomescreenshot.s3.amazonaws.com/image/2101513/52052049-23902999f7e9ff3e44769df0f5dbb7ab.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20241214%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241214T131904Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=c4d83f643a79a8d348bdc56b996d0c1285f6c63e4034a363fc1f72fc4b52d2f3"
+        >
           facebook
         </LinkPreview>
       </div>
