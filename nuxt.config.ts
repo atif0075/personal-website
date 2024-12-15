@@ -6,7 +6,6 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-
   app: {
     head: {
       charset: "utf-8",
@@ -37,6 +36,11 @@ export default defineNuxtConfig({
             "Frontend developer specializing in Nuxt and Vue.js. Building modern web applications with a focus on performance and user experience.",
         },
         { name: "twitter:image", content: "/og-image.jpg" },
+        // Google / Search Console
+        {
+          name: "google-site-verification",
+          content: process.env.GOOGLE_SITE_VERIFICATION,
+        },
       ],
       link: [
         {
